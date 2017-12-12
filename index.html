@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CSS Specificity Test</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center">CSS Specificity Test</h1>
+		<p class="text-center">Test your knowledge of CSS Specificity with this fun game! Select which rule wins. Click on "New Test" to get started:</p>
+		<div class="text-center"><button class="btn btn-secondary" id="generate-btn">New Test</button></div>
+		<div class="row">
+			<div class="col first-rule">
+				<div class="text-center"><button id='first-btn' class="btn">First rule wins</button></div>
+				<div class="rule">
+					
+				</div>
+			</div>
+			<div class="col-2 tie">
+				<button class="btn" id='tie-btn'>It's a tie</button>
+			</div>
+			<div class="col second-rule">
+				<div class="text-center"><button id='second-btn' class="btn">Second rule wins</button></div>
+				<div class="rule">
+					
+				</div>
+			</div>			
+		</div>
+		<div id="results"></div>
+
+	</div>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/specificity.js"></script>
+	<script type="text/javascript" src="js/test.js"></script>
+</body>
+</html>
