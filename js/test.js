@@ -1,7 +1,7 @@
 $(function() {
 	var TAG_NAMES = ['h1', 'p', 'div', 'span', 'h2'];
-	var CLASS_NAMES = ['.container', '.title', '.part', '.puppy', '.item', '.article'];
-	var ID_NAMES = ['#container', '#main', '#myElement', '#top', '#left', '#right', '#puppy']
+	var CLASS_NAMES = ['.container', '.title', '.part', '.puppy', '.item', '.article', '.blue-text', '.green-text', '.red-text', '.center-text', '.list-item', '.thing'];
+	var ID_NAMES = ['#container', '#main', '#myElement', '#top', '#left', '#right', '#puppy', '#first-paragraph', '#nav', '#id', '#myId']
 	var PSEUDO_CLASS = [':active', ':any', ':any-link', ':checked', 
 	':default', ':disabled', ':empty', ':enabled', ':first', ':first-child',
 	':first-of-type', ':fullscreen', ':focus', ':hover', ':indeterminate',
@@ -9,6 +9,10 @@ $(function() {
 	var PSEUDO_ELEMENTS = ['::after', '::before', '::cue', '::first-letter', '::first-line', '::selection'];
 
 	var RULES = ['color: red;', 'color: blue;', 'font-size: 16px;', 'font-size: 22px;']
+
+	var getNumber = function(max) {
+		return Math.floor(Math.random() * max)
+	}
 
 	var getRandom = function(arr) {
 		return arr[Math.floor(Math.random()*arr.length)];
@@ -42,14 +46,17 @@ $(function() {
 
 	var createSelector = function(children) {
 		var type = getType(),
-			value = getValue(type);
+			value = getValue(type),
+			pseudoClassEnabled = $('input[name=hasPseudoClass]').is(':checked'),
+			pseudoElEnabled = $('input[name=hasPseudoEl]').is(':checked');
 
-		if(hasPseudo()) {
+
+		if(pseudoElEnabled && hasPseudo()) {
 			pseudoEl = getRandom(PSEUDO_ELEMENTS);
 			pseudoClass = '';
 		} else {
 			pseudoEl = '';
-			pseudoClass = hasPseudo() ? getRandom(PSEUDO_CLASS) : '';
+			pseudoClass = pseudoClassEnabled && hasPseudo() ? getRandom(PSEUDO_CLASS) : '';
 		}
 
 		var selector = {
@@ -62,7 +69,8 @@ $(function() {
 
 		if(children > 0){
 			while(children > 0) {
-				selector['children'].push(createSelector(0));
+				var newChildren = getNumber(children);
+				selector['children'].push(createSelector(newChildren));
 				children--;
 			}
 		}
@@ -88,7 +96,7 @@ $(function() {
 	var generateRule = function(selector) {
 		var className = getRandom(CLASS_NAMES);
 		var tagName = getRandom(TAG_NAMES);
-		var selectorObj = createSelector(getBoolean());
+		var selectorObj = createSelector(getNumber(3));
 		var ruleHTML = '<div class="css-rule">'+getRandom(RULES)+'</div>}';
 
 		$(selector).html("<div class='selector'>"+createSelectorHtml(selectorObj)+"</div> {"+ruleHTML);
@@ -125,6 +133,7 @@ $(function() {
 	$('#generate-btn').click(function(){
 		$('#results').html('');
 		$('#results').removeClass();
+
 		generateRule('.first-rule .rule');
 		generateRule('.second-rule .rule');
 	});

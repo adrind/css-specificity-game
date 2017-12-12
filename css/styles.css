@@ -13,6 +13,22 @@ body a:visited {
 	text-decoration: underline;
 }
 
+nav a {
+	margin-right: 15px;
+}
+
+nav {
+	padding: 10px;
+}
+
+p {
+	width: 100%;
+}
+
+.container {
+	margin-top: 40px;
+}
+
 button.btn {
 	cursor: pointer;
 	background: #FFA69E;
@@ -42,7 +58,6 @@ button.btn-secondary:hover {
 h1 {
 	color: #5E6472;
 	margin-bottom: 20px;
-	margin-top: 20px;
 }
 
 .rule {
