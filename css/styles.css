@@ -3,6 +3,16 @@ body {
 	background: #F9F8F4;
 }
 
+body a {
+	color: #5E6472;
+	text-decoration: underline;
+}
+
+body a:visited {
+	color: #5E6472;
+	text-decoration: underline;
+}
+
 button.btn {
 	cursor: pointer;
 	background: #FFA69E;
